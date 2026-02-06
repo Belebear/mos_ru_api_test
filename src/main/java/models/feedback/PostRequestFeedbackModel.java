@@ -1,4 +1,4 @@
-package models;
+package models.feedback;
 
 import lombok.Builder;
 import lombok.Data;

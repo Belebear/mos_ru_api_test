@@ -1,5 +1,3 @@
-package Test;
-
 import models.readyCard.PostErrorResponseWithObjectCheckIfCardReadyModel;
 import models.readyCard.PostRequestCheckIfCardReadyModel;
 import models.readyCard.PostErrorResponseWithoutObjectCheckIfCardReadyModel;
@@ -9,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import specs.RequestSpec;
 import specs.ResponseSpec;
 import utils.Endpoints;
+import utils.TestData;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -47,7 +46,7 @@ public class CheckIfCardReadyTest extends TestBase {
                 .build());
         PostErrorResponseWithObjectCheckIfCardReadyModel response = step("Отправка POST запроса с невалидными данными", () -> given()
                 .spec(RequestSpec.baseSpec())
-                .header("captcha-code", "018d2337fc5adcfeb237499d71dbf321")
+                .header("captcha-code", TestData.headerCaptcha)
                 .body(requestBody)
                 .when()
                 .post(Endpoints.ORDERSTATE)

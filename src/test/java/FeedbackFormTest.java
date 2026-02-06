@@ -1,5 +1,3 @@
-package Test;
-
 import models.feedback.PostRequestFeedbackModel;
 import models.feedback.PostErrorResponseFeedbackModel;
 import org.junit.jupiter.api.DisplayName;
@@ -43,12 +41,13 @@ public class FeedbackFormTest extends TestBase {
                 .then()
                 .spec(ResponseSpec.errorResponse(400))
                 .extract().body().as(PostErrorResponseFeedbackModel.class);
+
         PostErrorResponseFeedbackModel.ErrorData errorData = response.getData().get(0);
 
+        step("Проверка полей Error_code, Field и Message в ответе",() -> {
         assertEquals("EMPTY_CAPTCHA", errorData.getError_code());
         assertEquals("captcha", errorData.getField());
-        assertEquals("Fields \"captcha\" or \"captchaCode\" is empty.", errorData.getMessage());
-
+        assertEquals("Fields \"captcha\" or \"captchaCode\" is empty.", errorData.getMessage());});
     }
 
     @Test
@@ -75,11 +74,13 @@ public class FeedbackFormTest extends TestBase {
                 .then()
                 .spec(ResponseSpec.errorResponse(400))
                 .extract().body().as(PostErrorResponseFeedbackModel.class);
+
         PostErrorResponseFeedbackModel.ErrorData errorData = response.getData().get(0);
 
+        step("Проверка полей error_code, field и message в ответе", () ->{
         assertEquals("INVALID_CAPTCHA", errorData.getError_code());
         assertEquals("captcha", errorData.getField());
-        assertEquals("Invalid captcha.", errorData.getMessage());
+        assertEquals("Invalid captcha.", errorData.getMessage());});
 
     }
 }

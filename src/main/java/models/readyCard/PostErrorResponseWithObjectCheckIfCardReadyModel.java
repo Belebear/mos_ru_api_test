@@ -1,4 +1,4 @@
-package models;
+package models.readyCard;
 
 import lombok.Data;
 

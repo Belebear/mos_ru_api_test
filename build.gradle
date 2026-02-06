@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id "io.freefair.lombok" version "9.1.0"
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group = 'ru.mail.barkalov'
@@ -9,12 +11,52 @@ repositories {
     mavenCentral()
 }
 
+allure {
+    report{
+        version.set("2.24.0")
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.24.0")
+            }
+        }
+    }
+}
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'io.rest-assured:rest-assured:5.5.6'
+    testImplementation 'io.rest-assured:json-schema-validator:5.5.6'
+    testImplementation 'io.qameta.allure:allure-rest-assured:2.24.0'
+    implementation "com.github.javafaker:javafaker:1.0.2"
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.register('feedback_test', Test) {
+    useJUnitPlatform {
+        includeTags("feedback_form_tests")
+    }
+}
+tasks.register('ready_test', Test) {
+    useJUnitPlatform {
+        includeTags("checkIfCardReadyTests")
+    }
+}
+tasks.register('status_test', Test) {
+    useJUnitPlatform {
+        includeTags("checkStatusCardTests")
+    }
+}
+tasks.register('all_api_test', Test) {
+    useJUnitPlatform {
+        includeTags("feedback_form_tests", "checkIfCardReadyTests","checkStatusCardTests")
+    }
 }

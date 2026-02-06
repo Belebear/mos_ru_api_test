@@ -2,14 +2,13 @@ package models.statusCard;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import models.readyCard.PostErrorResponseWithObjectCheckIfCardReadyModel;
 
 @Data
-public class PostErrorResponseCheckStatusCardModel {
+public class PostErrorResponseCheckStatusCardWithObjectModel {
     private String code;
     private String data;
     private String message;
-    private PostErrorResponseCheckStatusCardModel.Errors errors;
+    private PostErrorResponseCheckStatusCardWithObjectModel.Errors errors;
 
     @Data
     public static class Errors {

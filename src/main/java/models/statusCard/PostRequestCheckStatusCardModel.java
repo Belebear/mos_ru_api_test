@@ -1,5 +1,6 @@
-package models;
+package models.statusCard;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,5 +10,7 @@ public class PostRequestCheckStatusCardModel {
     private String captcha;
     private String card_number;
     private String card_series;
-    private String number_dul;
+
+    @JsonProperty("number_dul")
+    private String numberDul;
 }
