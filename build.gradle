@@ -39,6 +39,25 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+tasks.withType(Test) {
+    systemProperty "file.encoding", "UTF-8"
+    systemProperty "sun.jnu.encoding", "UTF-8"
+
+    // Также для вывода в консоль
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true
+        exceptionFormat "full"
+    }
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
 
 tasks.register('feedback_test', Test) {
     useJUnitPlatform {
