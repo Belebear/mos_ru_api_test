@@ -54,11 +54,7 @@ clean ${TESTS}
 <img src="files/screen/jenkins1.png"/>
 </p>
 
-- BROWSER - параметр для выбора браузера
-- BROWSER_SIZE - параметр для выбора разрешения, в котором будет открыт браузер
-- BROWSER_VERSION - параметр для выбора версии браузера
-- REMOTE - параметр для ввода адреса удаленного сервера, где будут выполняться тесты
-- TEST - параметр отвечающий за запуск по тестовой модели
+- TESTS - параметр отвечающий за запуск по тестовой модели
 - COMMENT - параметр, отвечающий за сообщение, которое будет отправлено в телеграм с отчетом
 
 ## Отчетность в [Allure](https://jenkins.autotests.cloud/job/38-belebear-rigla_project_lesson12/allure/) <img src="https://github.com/RomaQA/RomaQA/blob/main/media/icons/allure-Report-logo.svg" widht="40" height="40" />
@@ -76,20 +72,12 @@ clean ${TESTS}
 </p>
 
 ### По итогу прохождения тестов формируются:
-- Скриншоты
-- Код страницы
-- Видео прохождения теста
-- Логи
-
+- Лог запроса
+- Лог ответа или ошибки
 ## Отчетность в Telegram <img src="files/icons/TG.svg" widht="40" height="40" />
 
 ### Краткий отчет после прохождения тестов от чат-бота
 
 <p align="center">  
 <img src="files/screen/tg1.png"/>
-</p>
-
-## Пример видео с выполнением теста
-<p align="center">  
-<img src="files/video/77813ccb42e9f5d9ce96656dc001ef26.gif"/>
 </p>
