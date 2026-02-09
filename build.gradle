@@ -43,7 +43,6 @@ tasks.withType(Test) {
     systemProperty "file.encoding", "UTF-8"
     systemProperty "sun.jnu.encoding", "UTF-8"
 
-    // Также для вывода в консоль
     testLogging {
         events "passed", "skipped", "failed"
         showStandardStreams = true
